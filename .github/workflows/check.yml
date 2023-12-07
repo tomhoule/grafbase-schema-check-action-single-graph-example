@@ -10,6 +10,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - run: |
+          docker-compose up -d
+          npx -y grafbase introspect --dev > sdl.graphql
+
       - uses: grafbase/schema-check-action@main
         with:
           grafbase_access_token: ${{ secrets.GRAFBASE_ACCESS_TOKEN }}
