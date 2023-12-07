@@ -1,4 +1,4 @@
-import { graph, config } from '@grafbase/sdk'
+import { graph, config, connector } from '@grafbase/sdk'
 
 // Welcome to Grafbase!
 //
@@ -6,10 +6,10 @@ import { graph, config } from '@grafbase/sdk'
 
 const g = graph.Standalone()
 
-// Data Sources - https://grafbase.com/docs/connectors
-//
-// const pg = connector.Postgres('pg', { url: g.env('DATABASE_URL') })
-// g.datasource(pg)
+ // Data Sources - https://grafbase.com/docs/connectors
+
+ const pg = connector.Postgres('pg', { url: g.env('POSTGRES_URL') })
+ g.datasource(pg)
 
 // Resolvers - https://grafbase.com/docs/resolvers
 //
@@ -21,14 +21,6 @@ const g = graph.Standalone()
 export default config({
   graph: g,
   // Authentication - https://grafbase.com/docs/auth
-  auth: {
-    // OpenID Connect
-    // const oidc = auth.OpenIDConnect({ issuer: g.env('OIDC_ISSUER_URL') })
-    // providers: [oidc],
-    rules: (rules) => {
-      rules.public()
-    },
-  },
   // Caching - https://grafbase.com/docs/graphql-edge-caching
   // cache: {
   //   rules: [
