@@ -14,4 +14,4 @@ jobs:
         with:
           grafbase_access_token: ${{ secrets.GRAFBASE_ACCESS_TOKEN }}
           project_ref: tomhoule/grafbase-single-graph-ci-example@main
-          schema_path: ./sdl.graphql
+          schema_path: "./sdl.graphql"
