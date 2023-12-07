@@ -10,8 +10,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: tomhoule/grafbase-schema-check-action@main
+      - run: |
+          docker-compose up -d
+          npm i
+          npx -y grafbase introspect --dev > sdl.graphql
+
+      - uses: grafbase/schema-check-action@main
         with:
-          grafbase_access_token: TODO
-          project_ref: tomhoule/grafbase-single-graph-ci-example@main
+          grafbase_access_token: ${{ secrets.GRAFBASE_ACCESS_TOKEN }}
+          project_ref: tomhoule/schema-check-action-single-graph-example@main
           schema_path: ./sdl.graphql
