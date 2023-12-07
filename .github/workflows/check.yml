@@ -12,6 +12,6 @@ jobs:
 
       - uses: tomhoule/grafbase-schema-check-action@main
         with:
-          grafbase_access_token: TODO
+          grafbase_access_token: ${{ secrets.GRAFBASE_ACCESS_TOKEN }}
           project_ref: tomhoule/grafbase-single-graph-ci-example@main
           schema_path: ./sdl.graphql
