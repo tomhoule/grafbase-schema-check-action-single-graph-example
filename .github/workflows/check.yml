@@ -10,7 +10,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - run: |
+      - name: Introspect schema
+        run: |
           docker-compose up -d
           npm i
           npx -y grafbase introspect --dev > sdl.graphql
