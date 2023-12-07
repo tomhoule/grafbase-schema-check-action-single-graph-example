@@ -12,6 +12,7 @@ jobs:
 
       - run: |
           docker-compose up -d
+          npm i
           npx -y grafbase introspect --dev > sdl.graphql
 
       - uses: grafbase/schema-check-action@main
