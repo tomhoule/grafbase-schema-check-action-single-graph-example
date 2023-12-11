@@ -21,3 +21,4 @@ jobs:
           grafbase_access_token: ${{ secrets.GRAFBASE_ACCESS_TOKEN }}
           project_ref: tomhoule/schema-check-action-single-graph-example@main
           schema_path: ./sdl.graphql
+          slack_incoming_webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
