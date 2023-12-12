@@ -15,6 +15,7 @@ jobs:
           docker-compose up -d
           npm i
           npx -y grafbase introspect --dev > sdl.graphql
+          echo "type Query {}" >> sdl.graphql
 
       - uses: grafbase/schema-check-action@v1
         with:
